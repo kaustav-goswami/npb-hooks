@@ -100,6 +100,10 @@
          call timer_clear(i)
       end do
 
+#ifdef M5_ANNOTATION
+      call m5_exit_interface
+#endif
+
       call timer_start(T_total)
       if (timers_enabled) call timer_start(T_setup)
 
@@ -131,6 +135,11 @@
       call verify(nx, ny, nz, niter, verified, class)
 
       call timer_stop(t_total)
+
+#ifdef M5_ANNOTATION
+      call m5_exit_interface
+#endif
+
       total_time = timer_read(t_total)
 
       if( total_time .ne. 0. ) then

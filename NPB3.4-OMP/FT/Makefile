@@ -10,6 +10,10 @@ include ../sys/make.common
 OBJS = ft.o ft_data.o ${COMMON}/${RAND}.o ${COMMON}/print_results.o \
        ${COMMON}/timers.o ${COMMON}/wtime.o
 
+ifeq (${M5_ANNOTATION}, 1)
+	OBJS += ${COMMON}/m5_interface.o ${COMMON}/m5op.o
+endif
+
 ${PROGRAM}: config
 	@ver=$(VERSION); bfac=`echo $$ver|sed -e 's/^blk//' -e 's/^BLK//'`; \
 	if [ x$$ver != x$$bfac ] ; then		\
@@ -23,7 +27,11 @@ exec: $(OBJS)
 
 
 .f90.o:
+ifeq (${M5_ANNOTATION}, 1)
+	${FCOMPILE} -DM5_ANNOTATION $<
+else
 	${FCOMPILE} $<
+endif
 
 blk_par.h: FORCE
 	sed -e 's/=0/=$(BLKFAC)/' blk_par0.h > blk_par.h_wk
