@@ -29,7 +29,8 @@
 #---------------------------------------------------------------------------
 # This is the fortran compiler used for Fortran programs
 #---------------------------------------------------------------------------
-FC = gfortran
+#FC = gfortran
+FC = /riscv/_install/bin/riscv64-unknown-linux-gnu-gfortran
 # This links fortran programs; usually the same as ${FC}
 FLINK	= $(FC)
 
@@ -75,7 +76,8 @@ FLINKFLAGS = $(FFLAGS)
 #---------------------------------------------------------------------------
 # This is the C compiler used for C programs
 #---------------------------------------------------------------------------
-CC = gcc
+#CC = gcc
+CC = /riscv/_install/bin/riscv64-unknown-linux-gnu-gcc
 # This links C programs; usually the same as ${CC}
 CLINK	= $(CC)
 
@@ -120,7 +122,8 @@ CLINKFLAGS = $(CFLAGS)
 # this compiler go here also; typically there are few flags required; hence 
 # there are no separate macros provided for such flags.
 #---------------------------------------------------------------------------
-UCC	= gcc
+#UCC	= gcc
+UCC = /riscv/_install/bin/riscv64-unknown-linux-gnu-gcc
 
 
 #---------------------------------------------------------------------------
