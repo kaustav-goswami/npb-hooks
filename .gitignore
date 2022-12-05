@@ -1,0 +1,6 @@
+*.o
+*.mod
+NPB3.4-OMP/sys/setparams
+bin/
+*.swp
+npbparams.h
