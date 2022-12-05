@@ -13,6 +13,10 @@ OBJS = bt.o bt_data.o initialize.o exact_solution.o \
        z_solve$(BLK).o add.o error.o verify.o work_lhs$(BLK).o \
        ${COMMON}/print_results.o ${COMMON}/timers.o ${COMMON}/wtime.o
 
+ifeq (${M5_ANNOTATION}, 1)
+	OBJS += ${COMMON}/m5_interface.o ${COMMON}/m5op.o
+endif
+
 include ../sys/make.common
 
 # npbparams.h is included by bt_data module (via bt_data.o)
@@ -29,8 +33,11 @@ exec: $(OBJS)
 	${FLINK} ${FLINKFLAGS} -o ${PROGRAM} ${OBJS} ${F_LIB}
 
 .f90.o:
+ifeq (${M5_ANNOTATION}, 1)
+	${FCOMPILE} -DM5_ANNOTATION $<
+else
 	${FCOMPILE} $<
-
+endif
 
 blk_par.h: FORCE
 	sed -e 's/= 0/= $(BLKFAC)/' blk_par0.h > blk_par.h_wk
