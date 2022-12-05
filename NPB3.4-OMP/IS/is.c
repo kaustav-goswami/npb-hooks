@@ -64,6 +64,9 @@
 /* Uncomment below for cyclic schedule */
 /*#define SCHED_CYCLIC*/
 
+#ifdef M5_ANNOTATION
+void m5_exit_interface_();
+#endif
 
 /******************/
 /* default values */
@@ -953,6 +956,10 @@ int main( int argc, char **argv )
 
     if( CLASS != 'S' ) printf( "\n   iteration\n" );
 
+#ifdef M5_ANNOTATION
+    m5_exit_interface_();
+#endif
+
 /*  Start timer  */             
     timer_start( 0 );
 
@@ -967,6 +974,11 @@ int main( int argc, char **argv )
 
 /*  End of timing, obtain maximum time of all processors */
     timer_stop( 0 );
+
+#ifdef M5_ANNOTATION
+    m5_exit_interface_();
+#endif
+
     timecounter = timer_read( 0 );
 
 
