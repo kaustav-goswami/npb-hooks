@@ -11,6 +11,10 @@ OBJS = ua.o ua_data.o convect.o diffuse.o adapt.o move.o mason.o \
        precond.o utils.o verify.o setup.o transfer$(UXT).o \
        ${COMMON}/print_results.o ${COMMON}/timers.o ${COMMON}/wtime.o
 
+ifeq (${M5_ANNOTATION}, 1)
+	OBJS += ${COMMON}/m5_interface.o ${COMMON}/m5op.o
+endif
+
 include ../sys/make.common
 
 # npbparams.h is included by ua_data module (via ua_data.o)
@@ -31,7 +35,11 @@ ua-rd: ${OBJS} tmorwork.o
 	${FLINK} ${FLINKFLAGS} -o ${PROGRAM} ${OBJS} tmorwork.o ${F_LIB}
 
 .f90.o:
+ifeq (${M5_ANNOTATION}, 1)
+	${FCOMPILE} -DM5_ANNOTATION $<
+else
 	${FCOMPILE} $<
+endif
 
 ua.o:        ua.f90       ua_data.o
 setup.o:     setup.f90    ua_data.o

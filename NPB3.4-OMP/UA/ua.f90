@@ -166,6 +166,9 @@
           do i = 1, t_last
              if (i.ne.t_init) call timer_clear(i)
           end do
+#ifdef M5_ANNOTATION
+          call m5_exit_interface
+#endif
           call timer_start(1)          
         endif
 
@@ -239,6 +242,11 @@
       end do
 
       call timer_stop(1)
+
+#ifdef M5_ANNOTATION
+      call m5_exit_interface
+#endif
+
       tmax = timer_read(1)
        
       call verify(class, verified)
