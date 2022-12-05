@@ -12,6 +12,10 @@ OBJS = lu.o lu_data.o read_input.o \
        pintgr.o verify.o ${COMMON}/print_results.o \
        ${COMMON}/timers.o ${COMMON}/wtime.o
 
+ifeq (${M5_ANNOTATION}, 1)
+	OBJS += ${COMMON}/m5_interface.o ${COMMON}/m5op.o
+endif
+
 include ../sys/make.common
 
 # npbparams.h is included by lu_data module (via lu_data.o)
@@ -32,7 +36,11 @@ exec: $(OBJS)
 	${FLINK} ${FLINKFLAGS} -o ${PROGRAM} ${OBJS} ${F_LIB}
 
 .f90.o :
+ifeq (${M5_ANNOTATION}, 1)
+	${FCOMPILE} -DM5_ANNOTATION $<
+else
 	${FCOMPILE} $<
+endif
 
 lu.o:		lu.f90 lu_data.o
 blts.o:		blts.f90
