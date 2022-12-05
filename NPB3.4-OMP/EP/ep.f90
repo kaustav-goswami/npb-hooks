@@ -121,6 +121,10 @@
       if (timers_enabled) call timer_clear(3)
 !$omp end parallel
 
+#ifdef M5_ANNOTATION
+      call m5_exit_interface
+#endif
+
       call timer_start(1)
 
       t1 = a
@@ -216,6 +220,10 @@
  160  continue
 
       call timer_stop(1)
+
+#ifdef M5_ANNOTATION
+      call m5_exit_interface
+#endif
       tm  = timer_read(1)
 
       call verify(m, sx, sy, gc, verified, classv)

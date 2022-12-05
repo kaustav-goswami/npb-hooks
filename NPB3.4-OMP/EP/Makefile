@@ -8,13 +8,21 @@ OBJS = ep.o ep_data.o verify.o \
        ${COMMON}/print_results.o ${COMMON}/${RAND}.o \
        ${COMMON}/timers.o ${COMMON}/wtime.o
 
+ifeq (${M5_ANNOTATION}, 1)
+	OBJS += ${COMMON}/m5_interface.o ${COMMON}/m5op.o
+endif
+
 include ../sys/make.common
 
 ${PROGRAM}: config ${OBJS}
 	${FLINK} ${FLINKFLAGS} -o ${PROGRAM} ${OBJS} ${F_LIB}
 
 .f90.o:
+ifeq (${M5_ANNOTATION}, 1)
+	${FCOMPILE} -DM5_ANNOTATION $<
+else
 	${FCOMPILE} $<
+endif
 
 ep.o:		ep.f90 ep_data.o
 ep_data.o:	ep_data.f90 npbparams.h
