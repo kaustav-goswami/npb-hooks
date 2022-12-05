@@ -66,6 +66,10 @@
 #include "../common/c_timers.h"
 #endif
 
+#ifdef M5_ANNOTATION
+void m5_exit_interface_();
+#endif
+
 void c_print_results( char   *name,
                       char   clss,
                       int    n1, 
@@ -198,6 +202,11 @@ int32 DC(ADC_VIEW_PARS *adcpp) {
       fprintf(stdout,"Warning: Maximum number of tasks reached: %d\n",
               adcpp->nTasks);
    }
+
+#ifdef M5_ANNOTATION
+        m5_exit_interface_();
+#endif
+
 #pragma omp parallel shared(pvstp) private(itsk)
 #endif
   {
@@ -233,6 +242,11 @@ int32 DC(ADC_VIEW_PARS *adcpp) {
      timer_stop(itimer);
      tm0 = timer_read(itimer);
    }
+
+#ifdef M5_ANNOTATION
+   m5_exit_interface_();
+#endif
+
 #ifdef _OPENMP    
 #pragma omp critical
 #endif

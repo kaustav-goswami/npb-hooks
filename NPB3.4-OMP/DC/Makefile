@@ -10,6 +10,9 @@ OBJS = adc.o dc.o extbuild.o rbt.o jobcntl.o \
 	${COMMON}/c_print_results.o  \
 	${COMMON}/c_timers.o ${COMMON}/c_wtime.o
 
+ifeq (${M5_ANNOTATION}, 1)
+	OBJS += ${COMMON}/m5_interface.o ${COMMON}/m5op.o
+endif
 
 # npbparams.h is provided for backward compatibility with NPB compilation
 # header.h: npbparams.h
@@ -18,7 +21,11 @@ ${PROGRAM}: config ${OBJS}
 	${CLINK} ${CLINKFLAGS} -o ${PROGRAM} ${OBJS} ${C_LIB}
 
 .c.o:
+ifeq (${M5_ANNOTATION}, 1)
+	${CCOMPILE} -DM5_ANNOTATION $<
+else
 	${CCOMPILE} $<
+endif
 
 adc.o:      adc.c npbparams.h
 dc.o:       dc.c adcc.h adc.h macrodef.h npbparams.h
