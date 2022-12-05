@@ -1,8 +1,9 @@
-This repo adds m5 annotations to the NAS Parallel Benchmarks.
+This repo adds m5 annotations to the NAS Parallel Benchmarks located in
+`NPB/NPB3.4-OMP`.
 
-The annotations are added as follows,
+The annotations are added to the timed sections as follows,
 - An `m5_exit()` call before `timer_start()`.
-- An `m5_exit()` call before `timer_read()`.
+- An `m5_exit()` call after `timer_stop()`.
 
 In order to compile the benchmarks with m5 annotations, the
 following environment variables must be set,
