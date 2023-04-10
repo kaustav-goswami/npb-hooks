@@ -236,7 +236,7 @@
       end do
 
 #ifdef M5_ANNOTATION
-         call m5_exit_interface
+         call m5_work_begin_interface
 #endif
 
       call timer_start(T_bench)
@@ -267,7 +267,7 @@
       call timer_stop(T_bench)
 
 #ifdef M5_ANNOTATION
-      call m5_exit_interface
+      call m5_work_end_interface
 #endif
 
       t = timer_read(T_bench)

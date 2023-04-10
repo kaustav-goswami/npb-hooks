@@ -101,7 +101,7 @@
       end do
 
 #ifdef M5_ANNOTATION
-      call m5_exit_interface
+      call m5_work_begin_interface
 #endif
 
       call timer_start(T_total)
@@ -137,7 +137,7 @@
       call timer_stop(t_total)
 
 #ifdef M5_ANNOTATION
-      call m5_exit_interface
+      call m5_work_end_interface
 #endif
 
       total_time = timer_read(t_total)

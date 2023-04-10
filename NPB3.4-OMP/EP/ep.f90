@@ -122,7 +122,7 @@
 !$omp end parallel
 
 #ifdef M5_ANNOTATION
-      call m5_exit_interface
+      call m5_work_begin_interface
 #endif
 
       call timer_start(1)
@@ -222,7 +222,7 @@
       call timer_stop(1)
 
 #ifdef M5_ANNOTATION
-      call m5_exit_interface
+      call m5_work_end_interface
 #endif
       tm  = timer_read(1)
 

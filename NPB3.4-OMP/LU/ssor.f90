@@ -55,7 +55,7 @@
       end do
 
 #ifdef M5_ANNOTATION
-      call m5_exit_interface
+      call m5_work_begin_interface
 #endif
 
       call timer_start(1)
@@ -246,7 +246,7 @@
       call timer_stop(1)
 
 #ifdef M5_ANNOTATION
-      call m5_exit_interface
+      call m5_work_end_interface
 #endif
 
       maxtime= timer_read(1)

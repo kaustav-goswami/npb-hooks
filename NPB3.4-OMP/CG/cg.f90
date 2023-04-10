@@ -280,7 +280,7 @@
  2000 format(' Initialization time = ',f15.3,' seconds')
 
 #ifdef M5_ANNOTATION
-      call m5_exit_interface
+      call m5_work_begin_interface
 #endif
 
       call timer_start( T_bench )
@@ -345,7 +345,7 @@
       call timer_stop( T_bench )
 
 #ifdef M5_ANNOTATION
-      call m5_exit_interface
+      call m5_work_end_interface
 #endif
 
 !---------------------------------------------------------------------
