@@ -29,8 +29,7 @@
 #---------------------------------------------------------------------------
 # This is the fortran compiler used for Fortran programs
 #---------------------------------------------------------------------------
-#FC = gfortran
-FC = /riscv/_install/bin/riscv64-unknown-linux-gnu-gfortran
+FC = gfortran
 # This links fortran programs; usually the same as ${FC}
 FLINK	= $(FC)
 
@@ -47,7 +46,7 @@ F_INC =
 #---------------------------------------------------------------------------
 # Global *compile time* flags for Fortran programs
 #---------------------------------------------------------------------------
-FFLAGS	= -O3 -fopenmp -cpp
+FFLAGS	= -O3 -fopenmp -cpp -march=rv64gcv
 
 #---------------------------------------------------------------------------
 # Global *link time* flags. Flags for increasing maximum executable 
@@ -76,8 +75,7 @@ FLINKFLAGS = $(FFLAGS)
 #---------------------------------------------------------------------------
 # This is the C compiler used for C programs
 #---------------------------------------------------------------------------
-#CC = gcc
-CC = /riscv/_install/bin/riscv64-unknown-linux-gnu-gcc
+CC = gcc
 # This links C programs; usually the same as ${CC}
 CLINK	= $(CC)
 
@@ -106,7 +104,7 @@ C_INC =
 # _LARGEFILE64_SOURCE - are standard compiler flags which allow to work with 
 # files larger than 2GB.
 #---------------------------------------------------------------------------
-CFLAGS	= -O3 -fopenmp
+CFLAGS	= -O3 -fopenmp -march=rv64gcv
 
 #---------------------------------------------------------------------------
 # Global *link time* flags. Flags for increasing maximum executable 
@@ -122,8 +120,7 @@ CLINKFLAGS = $(CFLAGS)
 # this compiler go here also; typically there are few flags required; hence 
 # there are no separate macros provided for such flags.
 #---------------------------------------------------------------------------
-#UCC	= gcc
-UCC = /riscv/_install/bin/riscv64-unknown-linux-gnu-gcc
+UCC	= gcc
 
 
 #---------------------------------------------------------------------------
