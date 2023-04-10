@@ -2,16 +2,16 @@ This repo adds m5 annotations to the NAS Parallel Benchmarks located in
 `NPB/NPB3.4-OMP`.
 
 The annotations are added to the timed sections as follows,
-- An `m5_exit()` call before `timer_start(t_bench)`, or
+- An `m5_work_begin()` call before `timer_start(t_bench)`, or
 `timer_start(t_total)`, or an equivalent.
-- An `m5_exit()` call after `timer_stop(t_bench)`, or `timer_stop(t_total)`, 
+- An `m5_work_end()` call after `timer_stop(t_bench)`, or `timer_stop(t_total)`, 
 or an equivalent.
 
 **Notes:**
 - For the `DC` benchmark, the work is split into tasks via OMP directive.
 Each task uses a different timer for its timed section. To keep it simple,
-we decided to put an `m5_exit()` before the OMP task directive, and
-another `m5_exit()` after the OMP task directive.
+we decided to put an `m5_work_begin()` before the OMP task directive, and
+another `m5_work_end()` after the OMP task directive.
 
 In order to compile the benchmarks with m5 annotations, the
 following environment variables must be set,
