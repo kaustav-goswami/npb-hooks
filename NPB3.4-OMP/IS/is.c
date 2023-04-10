@@ -65,7 +65,8 @@
 /*#define SCHED_CYCLIC*/
 
 #ifdef M5_ANNOTATION
-void m5_exit_interface_();
+void m5_work_begin_interface_();
+void m5_work_end_interface_();
 #endif
 
 /******************/
@@ -957,7 +958,7 @@ int main( int argc, char **argv )
     if( CLASS != 'S' ) printf( "\n   iteration\n" );
 
 #ifdef M5_ANNOTATION
-    m5_exit_interface_();
+    m5_work_begin_interface_();
 #endif
 
 /*  Start timer  */             
@@ -976,7 +977,7 @@ int main( int argc, char **argv )
     timer_stop( 0 );
 
 #ifdef M5_ANNOTATION
-    m5_exit_interface_();
+    m5_work_end_interface_();
 #endif
 
     timecounter = timer_read( 0 );
