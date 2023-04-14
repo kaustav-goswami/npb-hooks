@@ -39,8 +39,11 @@ ${COMMON}/c_timers.o: ${COMMON}/c_timers.c ../config/make.def
 ${COMMON}/wtime.o: ${COMMON}/${WTIME} ../config/make.def
 	cd ${COMMON}; ${CCOMPILE} ${MACHINE} -o wtime.o ${COMMON}/${WTIME}
 
+${COMMON}/m5op.o: ${GEM5_M5_ABI_DIR}/m5op.S ../config/make.def
+	cd ${COMMON}; ${CCOMPILE} ${GEM5_M5_ABI_DIR}/m5op.S -Wno-implicit-function-declaration -I ${GEM5_INCLUDE_DIR}
+
 ${COMMON}/m5_interface.o: ${COMMON}/m5_interface.c ../config/make.def
-	cd ${COMMON}; ${CCOMPILE} m5_interface.c ${GEM5_M5_ABI_DIR}/m5op.S -Wno-implicit-function-declaration -I ${GEM5_INCLUDE_DIR}
+	cd ${COMMON}; ${CCOMPILE} m5_interface.c -Wno-implicit-function-declaration -I ${GEM5_INCLUDE_DIR}
 # For most machines or CRAY or IBM
 #	cd ${COMMON}; ${CCOMPILE} ${MACHINE} ${COMMON}/wtime.c
 # For a precise timer on an SGI Power Challenge, try:
