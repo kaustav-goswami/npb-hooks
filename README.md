@@ -1,6 +1,8 @@
 # npb-hooks
 Annotating the region of interest for npb.
 
+For instructions on how to compiler, see `NPB3.3.1/NPB3.3-OMP/README`.
+
 IMPORTANT NOTE:  This repo is not supposed to be the canonical source for the benchmarks and serves only as an example for annotating the ROI. The source code can be obtained from [NAS Parallel Benchmarks](https://www.nas.nasa.gov/publications/npb.html)
 
 This repo adds ROI hooks for NAS Parallel Benchmark (OMP version for now). In this particular implementation, the hooks are coupled with gem5 specific instructions (m5_dumpreststats) to collect the stats for the ROI. But the hooks can be used for any other tool with minimal effort.
@@ -21,6 +23,6 @@ In make.def we should define the path to gem5 directory. Also, -cpp should be ad
 The source file (i.e. BENCH.f or BENCH.c) should be modified to call roi_begin and roi_end functions. In here, we follow a the methodology used by the developers and the function calls are place right before and after the timing procedures.
 We use pre-processor for conditional compilation of added function calls (HOOKS).
 
-The make files should be modified to add the object files created (hooks.o and any other possible dependencies - in our case m5op_x86.o).
+The make files should be modified to add the object files created (hooks.o).
 Also, if hooks are enabled, proper flag should be set (-DHOOKS) in the final step of the compilation process (creating the executable).
 These are both done "conditionally" under HOOKS flag (ifeq ($HOOKS, 1)).
