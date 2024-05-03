@@ -9,7 +9,7 @@ include ../sys/make.common
 OBJS = ft.o ${COMMON}/${RAND}.o ${COMMON}/print_results.o \
        ${COMMON}/timers.o ${COMMON}/wtime.o
 ifeq (${HOOKS}, 1)
-        OBJS += ${COMMON}/hooks.o ${COMMON}/m5op_x86.o ${COMMON}/m5_mmap.o
+        OBJS += ${COMMON}/hooks.o
 endif
 
 ${PROGRAM}: config ${OBJS}

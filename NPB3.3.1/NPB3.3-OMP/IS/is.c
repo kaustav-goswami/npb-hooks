@@ -254,6 +254,7 @@ void    timer_start( int n );
 void    timer_stop( int n );
 double  timer_read( int n );
 
+void m5_exit_f_();
 void roi_begin_();
 void roi_end_();
 
@@ -985,6 +986,7 @@ int main( int argc, char **argv )
     timer_start( 0 );
 
 #ifdef HOOKS
+       m5_exit_f_();
        roi_begin_();
 #endif
 
@@ -1002,6 +1004,7 @@ int main( int argc, char **argv )
 
 #ifdef HOOKS
        roi_end_();
+       m5_exit_f_();
 #endif
 
 /*  This tests that keys are in sequence: sorting of last ranked key seq

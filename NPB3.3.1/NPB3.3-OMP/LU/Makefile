@@ -12,7 +12,7 @@ OBJS = lu.o read_input.o \
        pintgr.o verify.o ${COMMON}/print_results.o \
        ${COMMON}/timers.o ${COMMON}/wtime.o
 ifeq (${HOOKS}, 1)
-        OBJS += ${COMMON}/hooks.o ${COMMON}/m5op_x86.o ${COMMON}/m5_mmap.o
+        OBJS += ${COMMON}/hooks.o
 endif
 
 include ../sys/make.common

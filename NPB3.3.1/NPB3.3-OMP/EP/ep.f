@@ -141,6 +141,7 @@ c   sure these initializations cannot be eliminated as dead code.
 !$omp end parallel
 
 #ifdef HOOKS
+      call m5_exit_f
       call roi_begin
 #endif
       call timer_start(1)
@@ -242,6 +243,7 @@ c        vectorizable.
 
 #ifdef HOOKS
       call roi_end
+      call m5_exit_f
 #endif
 
       nit=0

@@ -1,6 +1,8 @@
 The OpenMP implementation of NPB 3.3 (NPB3.3-OMP)
 --------------------------------------------------
 
+For gem5 HOOKS, skip to the bottom of this file.
+
 For problem reports and suggestions on the implementation, 
 please contact:
 
@@ -35,3 +37,30 @@ may be required.
 OMP/LU-HP (the hyper-plane implementation of LU) is no longer 
 included in the distribution.  To get this version, please 
 download NPB3.2.1 instead.
+
+
+# gem5 HOOKS
+
+This sections explains gem5 HOOKS used to annotate this benchmark. This
+specific version of gapbs is hardcoded for arm64 compilation. However, changing
+the `Makefile` should do the trick.
+
+First you need to clone and compile m5 util.
+```sh
+git clone git@github.com:gem5/gem5.git
+cd gem5
+export GEM5_HOME=`pwd`
+cd ext/m5
+scons build/arm64/out/m5 -j32   # Potential cross-compiler errors if
+                                # incorrectly set
+```
+Now, go back to the gapbs directory and compile gapbs. All the variables are
+set to compile with HOOKS enabled.
+```sh
+make -j8
+```
+
+The new #define is HOOKS=1. HOOKS is used to mark the annotations. At the start
+and end of the annotations, there is a m5_exit. This can be used for
+checkpointing.
+

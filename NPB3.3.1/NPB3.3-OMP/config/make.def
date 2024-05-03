@@ -36,23 +36,23 @@ FLINK	= $(F77)
 #---------------------------------------------------------------------------
 # These macros are passed to the linker
 #---------------------------------------------------------------------------
-F_LIB  =
+F_LIB  = -L${GEM5_PATH}/util/m5/build/arm64/out -lm5
 
 #---------------------------------------------------------------------------
 # These macros are passed to the compiler
 #---------------------------------------------------------------------------
-F_INC =
+F_INC =  -I${GEM5_PATH}/include -I${GEM5_PATH}/util/m5/src
 
 #---------------------------------------------------------------------------
 # Global *compile time* flags for Fortran programs
 #---------------------------------------------------------------------------
-FFLAGS	= -O3 -fopenmp -mcmodel=medium -cpp -DM5OP_ADDR=0xFFFF0000
+FFLAGS	= -O3 -fopenmp -cpp
 
 #---------------------------------------------------------------------------
 # Global *link time* flags. Flags for increasing maximum executable
 # size usually go here.
 #---------------------------------------------------------------------------
-FLINKFLAGS = -O3 -fopenmp -mcmodel=medium
+FLINKFLAGS = -O3 -fopenmp
 
 
 #---------------------------------------------------------------------------
@@ -82,12 +82,12 @@ CLINK	= $(CC)
 #---------------------------------------------------------------------------
 # These macros are passed to the linker
 #---------------------------------------------------------------------------
-C_LIB  = -lm
+C_LIB  = -L${GEM5_PATH}/util/m5/build/arm64/out -lm5 -lm
 
 #---------------------------------------------------------------------------
 # These macros are passed to the compiler
 #---------------------------------------------------------------------------
-C_INC =
+C_INC = -I${GEM5_PATH}/include -I${GEM5_PATH}/util/m5/src
 
 #---------------------------------------------------------------------------
 # Global *compile time* flags for C programs
@@ -104,13 +104,13 @@ C_INC =
 # _LARGEFILE64_SOURCE - are standard compiler flags which allow to work with
 # files larger than 2GB.
 #---------------------------------------------------------------------------
-CFLAGS	= -O3 -fopenmp -mcmodel=medium -DM5OP_ADDR=0xFFFF0000
+CFLAGS	= -O3 -fopenmp
 
 #---------------------------------------------------------------------------
 # Global *link time* flags. Flags for increasing maximum executable
 # size usually go here.
 #---------------------------------------------------------------------------
-CLINKFLAGS = -O3 -fopenmp -mcmodel=medium
+CLINKFLAGS = -O3 -fopenmp
 
 
 #---------------------------------------------------------------------------
@@ -157,9 +157,4 @@ WTIME  = wtime.c
 #---------------------------------------------------------------------------
 # MACHINE	=	-DCRAY
 # MACHINE	=	-DIBM
-
-#---------------------------------------------------------------------------
-# Destination of gem5 directory, relative to sub dirs of the main directory. - @TODO Update for the final commit. (../../gem5)
-#---------------------------------------------------------------------------
-GEM5DIR	= ../../../../../../gem5-EXP/gem5/
 

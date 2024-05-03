@@ -1,5 +1,6 @@
 #include <stdio.h>
-#include "m5_mmap.h"
+#include <m5_mmap.h>
+#include <gem5/m5ops.h>
 
 
 void init() __attribute__((constructor));
@@ -9,6 +10,11 @@ void init() {
 	//__attribute__ makes this function get called before main()
 	// need to mmap /dev/mem
 	map_m5_mem();
+}
+
+void m5_exit_f_() {
+    // this function calls m5_exit
+    m5_exit(0);
 }
 
 void roi_begin_(){

@@ -118,6 +118,7 @@ c---------------------------------------------------------------------
          call timer_clear(i)
       end do
 #ifdef HOOKS
+      call m5_exit_f
       call roi_begin
 #endif
 
@@ -156,6 +157,7 @@ c         call checksum(iter, u2, dims(1), dims(2), dims(3))
 
 #ifdef HOOKS
       call roi_end
+      call m5_exit_f
 #endif
 
       if( total_time .ne. 0. ) then

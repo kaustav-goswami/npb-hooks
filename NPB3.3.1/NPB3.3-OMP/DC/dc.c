@@ -95,6 +95,7 @@ void ShowADCPar(ADC_PAR *par);
 int32 DC(ADC_VIEW_PARS *adcpp);
 int Verify(long long int checksum,ADC_VIEW_PARS *adcpp);
 
+void m5_exit_f_();
 void roi_begin_();
 void roi_end_();
 
@@ -206,6 +207,7 @@ int32 DC(ADC_VIEW_PARS *adcpp) {
    }
 
 #ifdef HOOKS
+   m5_exit_f_();
    roi_begin_();
 #endif
 
@@ -265,6 +267,7 @@ int32 DC(ADC_VIEW_PARS *adcpp) {
 
 #ifdef HOOKS
    roi_end_();
+   m5_exit_f_();
 #endif
 
    t_total=pvstp->tm_max; 

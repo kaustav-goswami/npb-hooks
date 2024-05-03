@@ -237,6 +237,7 @@ c---------------------------------------------------------------------
      >     ' Initialization time: ',tinit, ' seconds'
 
 #ifdef HOOKS
+      call m5_exit_f
       call roi_begin
 #endif
 
@@ -275,6 +276,7 @@ c---------------------------------------------------------------------
 
 #ifdef HOOKS
       call roi_end
+      call m5_exit_f
 #endif
 
       verified = .FALSE.

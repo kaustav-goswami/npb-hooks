@@ -162,6 +162,7 @@ c.........reset the solution and start the timer, keep track of total no elms
           call r_init(ta1,ntot,0.d0)
 
 #ifdef HOOKS
+       call m5_exit_f
        call roi_begin
 #endif
 
@@ -247,6 +248,7 @@ c.......perform mesh adaptation
 
 #ifdef HOOKS
        call roi_end
+       call m5_exit_f
 #endif
 
       call verify(class, verified)

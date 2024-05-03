@@ -11,7 +11,7 @@ OBJS = is.o \
        ${COMMON}/c_timers.o \
        ${COMMON}/c_wtime.o
 ifeq (${HOOKS}, 1)
-        OBJS += ${COMMON}/hooks.o ${COMMON}/m5op_x86.o ${COMMON}/m5_mmap.o
+        OBJS += ${COMMON}/hooks.o
 endif
 
 
