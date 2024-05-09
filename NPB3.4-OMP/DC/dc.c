@@ -67,6 +67,7 @@
 #endif
 
 #ifdef M5_ANNOTATION
+void m5_exit_interface_();
 void m5_work_begin_interface_();
 void m5_work_end_interface_();
 #endif
@@ -205,6 +206,7 @@ int32 DC(ADC_VIEW_PARS *adcpp) {
    }
 
 #ifdef M5_ANNOTATION
+   m5_exit_interface_();
    m5_work_begin_interface_();
 #endif
 

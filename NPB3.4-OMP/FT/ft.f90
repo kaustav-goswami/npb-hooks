@@ -101,6 +101,7 @@
       end do
 
 #ifdef M5_ANNOTATION
+      call m5_exit_interface
       call m5_work_begin_interface
 #endif
 

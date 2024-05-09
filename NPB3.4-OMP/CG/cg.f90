@@ -280,6 +280,7 @@
  2000 format(' Initialization time = ',f15.3,' seconds')
 
 #ifdef M5_ANNOTATION
+      call m5_exit_interface
       call m5_work_begin_interface
 #endif
 

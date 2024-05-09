@@ -162,11 +162,11 @@ WTIME  = wtime.c
 #---------------------------------------------------------------------------
 # Path to the gem5 include directory
 #---------------------------------------------------------------------------
-GEM5_INCLUDE_DIR = ../../../../gem5/include
+GEM5_INCLUDE_DIR = /home/kaustavg/simulators/ARM/gem5-darchr/include
 
 
 #---------------------------------------------------------------------------
 # Path to the m5 abi for a specific ISA
 #---------------------------------------------------------------------------
 #
-GEM5_M5_ABI_DIR = ../../../../gem5/util/m5/src/abi/riscv
+GEM5_M5_ABI_DIR=/home/kaustavg/simulators/ARM/gem5-darchr/util/m5/src/abi/arm64
